@@ -4,11 +4,9 @@ import time
 def distance(a, b):
     n, m = len(a), len(b)
     if n > m:
-        # Make sure n <= m
         a, b = b, a
         n, m = m, n
-    current_row = range(n + 1)  # Keep current and previous row, not entire
-    # matrix
+    current_row = range(n + 1)
     for i in range(1, m + 1):
         previous_row, current_row = current_row, [i] + [0] * n
         for j in range(1, n + 1):
@@ -20,7 +18,7 @@ def distance(a, b):
     return current_row[n]
 
 
-def read_the_word():
+def read_the_word_easy():
     word_distance = {}
     input_word = raw_input('Enter the word: ').lower()
     #  354937 words.txt
@@ -33,14 +31,15 @@ def read_the_word():
                 return
     word_distance_sorted = sorted(word_distance.items(), key=lambda t: t[1])
     i = 0
+    print "Can not find this word. Maybe you mean:"
     for word in word_distance_sorted:
         i += 1
-        if i < 11:
+        if i < 2:
             print word[0]
         else:
             break
 
 start = time.time()
-read_the_word()
+read_the_word_easy()
 done = time.time()
 print done - start
