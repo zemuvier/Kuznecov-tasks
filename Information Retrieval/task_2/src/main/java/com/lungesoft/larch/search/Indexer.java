@@ -25,7 +25,6 @@ public class Indexer {
         //this directory will contain the indexes
         Directory indexDirectory = FSDirectory.open(new File(indexDirectoryPath).toPath());
         //create the indexer
-
         IndexWriterConfig indexConfig = new IndexWriterConfig(new SynonymAnalyzer());
         indexConfig.setOpenMode(IndexWriterConfig.OpenMode.CREATE);
         writer = new IndexWriter(indexDirectory,  indexConfig);

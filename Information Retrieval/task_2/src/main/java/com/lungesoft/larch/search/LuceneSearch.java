@@ -22,7 +22,10 @@ public class LuceneSearch {
     private Indexer indexer;
     private Searcher searcher;
 
-    public void createIndex() throws IOException{
+    public void
+
+
+    createIndex() throws IOException{
         System.out.println("Starting indexing");
         indexer = new Indexer(indexDir);
         int numIndexed;
