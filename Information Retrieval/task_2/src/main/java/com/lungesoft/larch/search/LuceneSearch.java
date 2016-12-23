@@ -59,7 +59,15 @@ public class LuceneSearch {
 
             System.out.println("File: " + scoreDoc.score + " " + filepath);
         }
-        return new ResponseList<>((endTime - startTime), hits.totalHits, newsList);
+        return new ResponseList<>((endTime - startTime), hits.totalHits, newsList);}
+
+    public TopDocs searchTopDocs(String searchQuery, String ... selections) throws IOException, ParseException {
+        searcher = new Searcher(indexDir);
+        return searcher.search(searchQuery, selections);
+    }
+
+    public Searcher getSearcher() {
+        return searcher;
     }
 
 

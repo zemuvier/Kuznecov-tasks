@@ -7,6 +7,7 @@ public class News {
     private String author;
     private String link;
     private String text;
+    private String filePath;
     private double score;
 
 
@@ -64,6 +65,14 @@ public class News {
 
     public void setScore(double score) {
         this.score = score;
+    }
+
+    public String getFilePath() {
+        return filePath;
+    }
+
+    public void setFilePath(String filePath) {
+        this.filePath = filePath;
     }
 
     @Override

@@ -7,9 +7,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-/**
- * Created by Vadim on 21.09.2016.
- */
 public class Utils {
 
     public static News readFile(File file) {
@@ -31,6 +28,7 @@ public class Utils {
             news.setLink(news_json.getString("link"));
             news.setSubmit(news_json.getString("submit"));
             news.setText(news_json.getString("text"));
+            news.setFilePath(file.getPath());
             return news;
         } else {
             return null;

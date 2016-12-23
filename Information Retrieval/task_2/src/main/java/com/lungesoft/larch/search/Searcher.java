@@ -30,20 +30,13 @@ public class Searcher {
 
     private IndexSearcher indexSearcher;
 
-    private CharArraySet stopWords = new CharArraySet(10, true);
-    {
-        stopWords.add("среди");
-        stopWords.add("между");
-        stopWords.add("под");
-        stopWords.add("над");
-    }
 
-    protected Searcher(String indexDirectoryPath) throws IOException{
+    public Searcher(String indexDirectoryPath) throws IOException{
         Directory indexDirectory = FSDirectory.open(new File(indexDirectoryPath).toPath());
         indexSearcher = new IndexSearcher(DirectoryReader.open(indexDirectory));
     }
 
-    protected TopDocs search(String searchQuery, String ... selections) throws IOException, ParseException {
+    public TopDocs search(String searchQuery, String ... selections) throws IOException, ParseException {
         ArrayList<QueryParser> queryParsers = new ArrayList<>();
 
         for (String selection : selections) {
@@ -57,7 +50,7 @@ public class Searcher {
         return indexSearcher.search(result_query.build(), MAX_SEARCH);
     }
 
-    protected Document getDocument(ScoreDoc scoreDoc) throws IOException {
+    public Document getDocument(ScoreDoc scoreDoc) throws IOException {
         return indexSearcher.doc(scoreDoc.doc);
     }
 
