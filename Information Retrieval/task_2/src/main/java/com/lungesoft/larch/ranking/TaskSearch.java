@@ -40,7 +40,7 @@ public class TaskSearch {
         List<Double> yy = new ArrayList<>();
         List<List<Double>> xx = new ArrayList<>();
         while (scanner.hasNext()) {
-            String[] arguments = scanner.nextLine().split(" : ");
+            String[] arguments = scanner.nextLine().split(" # ");
             List<Double> x = new ArrayList<>();
             for (int i = 0; i < arguments.length - 3; i++) {
                 x.add(Double.valueOf(arguments[i]));
