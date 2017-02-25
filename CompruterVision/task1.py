@@ -1,9 +1,8 @@
 import cv2
-import numpy as np
 
 import base
 
-alpha = 2.0
+alpha = 2
 
 
 def change_image_contrast():
@@ -11,13 +10,19 @@ def change_image_contrast():
 
     Steps:
     1. Take RGB image
-    2. Change channels via formulas
-    3. Save new image
+    2. Convert in to LAB
+    3. Change channels via formulas
+    4. Convert in to RGB
+    5. Save new image
     """
     image = base.read_image(image_name='test.jpg')
-    new_image = cv2.multiply(image, np.array([alpha]))
-    base.save_image(image=new_image, image_name='final')
-
+    lab_image = cv2.cvtColor(image, cv2.COLOR_RGB2LAB)
+    l, a, b = cv2.split(lab_image)
+    a = (a - 128) * alpha + 128
+    b = (b - 128) * alpha + 128
+    new_image = cv2.merge((l, a, b))
+    try_image = cv2.cvtColor(new_image, cv2.COLOR_LAB2RGB)
+    base.save_image(image=try_image, image_name='final')
 
 if __name__ == '__main__':
     change_image_contrast()
