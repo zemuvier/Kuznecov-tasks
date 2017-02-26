@@ -71,7 +71,7 @@ def _get_min_cmyk(c, m, y):
 
 
 if __name__ == '__main__':
-    image = base.read_image(image_name='s.jpg')
+    image = base.read_image(image_name='test.jpg')
     model = raw_input('Choose color model[r/l/c]: ')
     if model == 'r':
         plot_rgb_histogram(image)
