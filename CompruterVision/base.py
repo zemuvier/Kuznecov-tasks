@@ -1,3 +1,4 @@
+from matplotlib import pyplot as plt
 import cv2
 
 
@@ -34,12 +35,14 @@ def save_image(image, image_name, image_format='jpg'):
     cv2.imwrite(file_name, image)
 
 
-def split_into_rgb_channels(image):
+def plot_histogram(image, color):
     """
     :param image: image object
-    :return: 3 channels of image
+    :param color: color system
+    :return: histogram image
     """
-    red = image[:, :, 2]
-    green = image[:, :, 1]
-    blue = image[:, :, 0]
-    return red, green, blue
+    for i, col in enumerate(color):
+        histogram = cv2.calcHist([image], [i], None, [256], [0, 256])
+        plt.plot(histogram, color=col)
+        plt.xlim([0, 256])
+    return plt.show()
